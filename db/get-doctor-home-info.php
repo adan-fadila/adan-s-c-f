@@ -1,15 +1,6 @@
 <?php
 include 'db.php';
 
-$patienCountQuery = "SELECT COUNT(patient_id) AS count_of_patients FROM tbl_225_request join 
-                                                                        tbl_225_doctor_method on tbl_225_request.method_id = tbl_225_doctor_method.method_id join
-                                                                                      tbl_225_doctor on tbl_225_doctor_method.doctor_id = tbl_225_doctor.id where tbl_225_doctor.user_id = " . $_SESSION["id"] . ";";
-
-$patientCountRes = mysqli_query($con, $patienCountQuery);
-$patientCountRow = mysqli_fetch_assoc($patientCountRes);
-$patientCount = $patientCountRow["count_of_patients"];
-mysqli_free_result($patientCountRes);
-
 $requestCountQuery = "SELECT COUNT(tbl_225_request.id) AS count_of_requests FROM tbl_225_request join 
                                     tbl_225_doctor_method on tbl_225_request.method_id = tbl_225_doctor_method.method_id join
                                                                                     tbl_225_doctor on tbl_225_doctor_method.doctor_id = tbl_225_doctor.id where tbl_225_doctor.user_id = " . $_SESSION["id"] . ";";
@@ -39,7 +30,15 @@ $solvedRequestCountRes = mysqli_query($con, $solvedRequestCountQuery);
 $solvedRequestCountRow = mysqli_fetch_assoc($solvedRequestCountRes);
 $solvedRequestCount = $solvedRequestCountRow["count_of_solved_requests"];
 
+$editRequestQuery = "SELECT COUNT(tbl_225_treatments.id) AS count_of_edit_requests FROM tbl_225_treatments join 
 
-
+                                                tbl_225_doctor on tbl_225_treatments.doctor_id = tbl_225_doctor.id where tbl_225_doctor.user_id = " . $_SESSION["id"] . " and tbl_225_treatments.edit = 1;";
+$editRequestCountRes = mysqli_query($con, $editRequestQuery);
+$editRequestCountRow = mysqli_fetch_assoc($editRequestCountRes);
+$editRequestCount = $editRequestCountRow["count_of_edit_requests"];
 mysqli_free_result($unsolvedRequestCountRes);
+mysqli_free_result($solvedRequestCountRes);
+
+mysqli_free_result($editRequestCountRes);
+
 mysqli_close($con);

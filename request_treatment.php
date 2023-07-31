@@ -1,8 +1,10 @@
 <?php
+include './components/patientHeader/patientHeader.php';
 include './db/get-user.php';
 include './db/get-diagnosis.php';
 include './json-data/treatment-type.php';
 include './json-data/allergies.php';
+
 
 ?>
     <!DOCTYPE html>
@@ -19,26 +21,18 @@ include './json-data/allergies.php';
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
               integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
               crossorigin="anonymous">
-   
+         <?php patientHeaderLinks();?>
         <link rel="stylesheet" href="css/formStyle.css">
-        <link rel="stylesheet" href="css/hum.css">
+       
         <script src="./js/formScript.js"></script>
-        <script src="./js/multi-select.js"></script>
-        <script src="./js/quest.js"></script>
+        
     </head>
     <body>
     <header>
-        <a href="#" id="logo"> </a>
-        <div class="web-nav">
-            <ul class="web-nav-list">
-                <li class="web-nav-list-item"><a href="./index.php">Home</a></li>
-                <li class="web-nav-list-item"><a href="./treatmintList.php">Treatments List</a></li>
-                <li class="web-nav-list-item active"><a href="#">New Treatment Request</a></li>
-            </ul>
-        </div>
-        <div class="header-right"><img src="images/profile.png"></div>
+       <?php patientHeader();?>
     </header>
     <main>
+        
         <form id="regForm" method="POST" action="./mainObject.php">
             <h1>Request New Treatment:</h1>
             <div class="tab">
@@ -98,7 +92,6 @@ include './json-data/allergies.php';
                 your diagnosis:
                 <div class="diagnosis">
                     <div class="diagnosis-select">
-                        <!-- <select name="diagnosis1" class="multiselect-dropdown" multiple id="diagnosis"> -->
                         <select name="diagnosis1">
                             <?php
                             echo $diagnosisOptions
@@ -144,11 +137,7 @@ include './json-data/allergies.php';
                             </div>
                             <label class="quest-diet">what type of food do you like
                                 <textarea cols="30" rows="3" name="preferFood" class="form-control"></textarea> </label>
-                            <div id="sport-quest">
-                                <div class="work-day"> how many work days? <input type="range" max="7" min="0"
-                                                                                  class="form-range" name="workdays">
-                                </div>
-                            </div>
+                          
                         </div>
 
 
@@ -189,16 +178,6 @@ include './json-data/allergies.php';
 
         </form>
     </main>
-    <footer>
-        <?php
-
-        addFooter();
-        ?>
-    </footer>
-
     </body>
 
     </html>
-<?php
-
-?>

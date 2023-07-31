@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $height = $_POST["height"];
     $comments = $_POST["comments"];
     $vegeterians = true;
-    $query = "INSERT INTO tbl_225_request (patient_id, method, diagnosis, allergies, prefers, weight, height, vegeterian, comments) 
+    $query = "INSERT INTO tbl_225_request (patient_id, method_id, diagnosis, allergies, prefers, weight, height, vegeterian, comments) 
    VALUES ('$id', '$method + 1', '$diagnosis', '$allergies' , '$preferFood' , '$weight' , '$height' , '$vegeterians' , '$comments')";
 
     $addRequest = mysqli_query($con, $query);
@@ -23,4 +23,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 } else {
     echo "Add treatment fault";
 }
+
 ?>

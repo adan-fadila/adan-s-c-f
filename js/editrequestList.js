@@ -1,4 +1,4 @@
-const table = document.getElementById("unsolvedRequestTable");
+const table = document.getElementById("editRequestTable");
 // if (table == null) {
 //     table = document.getElementById("solvedRequestTable");
 // }
@@ -7,7 +7,7 @@ const table = document.getElementById("unsolvedRequestTable");
 function handleRowClick(requestId, patientId) {
     // You can now use the "requestId" variable as needed
     // For example, navigate to a specific page with the request ID as a query parameter
-    const queryString = `?requestId=${encodeURIComponent(requestId)}&patientId=${encodeURIComponent(patientId)}`;
+    const queryString = `?requestId=${encodeURIComponent(requestId)}`;
 
-    window.location.href = "unslovedRequest.php" + queryString;
+    window.location.href = "editRequest.php" + queryString;
 }

@@ -1,8 +1,8 @@
 <?php
-session_start();
-include './db/patientHomeInfo.php';
 include './components/patientHeader/patientHeader.php';
-include './components/patientHeader/patientHeaderLinks.php';
+include './db/patientHomeInfo.php';
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,7 +25,7 @@ include './components/patientHeader/patientHeaderLinks.php';
                     <h5 class="text-uppercase">recently informaition</h5>
 
 
-                    <a role="button" href="#" class="btn btn-primary btn-sm">add treatment</a>
+                    <a role="button" href="./request_treatment.php" class="btn btn-primary btn-sm">request treatment</a>
 
                 </div>
                 <div class="row">
@@ -53,7 +53,6 @@ include './components/patientHeader/patientHeaderLinks.php';
                                         </div>
                                         <div>
                                             <h4>unsolved requests</h4>
-
                                         </div>
                                     </div>
                                     <div class="align-self-center">

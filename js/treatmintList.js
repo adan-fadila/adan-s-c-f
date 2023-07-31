@@ -30,7 +30,7 @@ $(document).ready(function() {
 
     });
     $("#sendMessageButton").click(function() {
-        if (confirm("Are you sure you want to delete this data?")) {
+        if (confirm("Are you sure you want to send ?")) {
             var xhr = new XMLHttpRequest();
             xhr.open('POST', 'db/treatmentListAction.php', true);
             xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');

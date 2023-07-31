@@ -69,7 +69,7 @@ $(document).ready(function() {
         }
         $.ajax({
             type: 'POST',
-            url: 'db/getForm2.php',
+            url: 'db/editTreatment.php',
             data: form + "&treatment=" + JSON.stringify(mealData),
             success: function(data) {
                 // window.location.href = 'try.php';

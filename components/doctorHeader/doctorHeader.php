@@ -1,5 +1,8 @@
-<?php function addHeader()
+<?php
+function addHeader()
 {
+    $name = $_SESSION["name"];
+    $currentPage = basename($_SERVER['PHP_SELF']);
     echo '
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
@@ -10,35 +13,25 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="doctorHome.php">dashboard</a>
+                             <a class="nav-link ' . ($currentPage === 'doctorHome.php' ? 'active' : '') . '" href="doctorHome.php">dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="doctorPatients.php">patient list</a>
+                            <a class="nav-link ' . ($currentPage === 'unsovedRequestList.php' ? 'active' : '') . '" href="unsovedRequestList.php">unsolved request</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="doctorPatients.php">unsolved request</a>
+                            <a class="nav-link ' . ($currentPage === 'editReports.php' ? 'active' : '') . '" href="editReports.php">edit reports</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="doctorPatients.php">edit reports</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="doctorPatients.php">new request</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="doctorPatients.php">solved requests</a>
+                            <a class="nav-link ' . ($currentPage === 'solvedRequestList.php' ? 'active' : '') . '" href="solvedRequestList.php">solved requests</a>
                         </li>
                         
                     </ul>
                     <div class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="images/profile.png" alt="profile" title="profile">
+                            ' . $name . '
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
+                            
                             <li><a class="dropdown-item" href="signOut.php">sign out</a></li>
                         </ul>
                     </div>
@@ -56,5 +49,5 @@ function addDoctorHeaderHeadLinks()
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link rel="styleSheet" href="components\header\doctorHeader.css">';
+    <link rel="styleSheet" href="components\doctorHeader\doctorHeader.css">';
 }

@@ -1,6 +1,10 @@
 <?php
+session_start();
+
 function patientHeader()
-{
+{$name =  $_SESSION["name"];
+  $currentPage = basename($_SERVER['PHP_SELF']);
+
   echo '	<nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
       <a id="logo" href="#"></a>
@@ -11,22 +15,21 @@ function patientHeader()
       <div class=" collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ms-auto ">
           <li class="nav-item">
-            <a class="nav-link mx-2 active" aria-current="page" href="#">Home</a>
+          <a class="nav-link mx-2 ' . ($currentPage === 'patientHome.php' ? 'active' : '') . '" id="home" href="patientHome.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mx-2" href="#">tratments list</a>
+          <a class="nav-link mx-2 ' . ($currentPage === 'treatmintList.php' ? 'active' : '') . '" id="treatmentList" href="treatmintList.php">treatments list</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mx-2" href="#">unsolved requests</a>
+          <a class="nav-link mx-2 ' . ($currentPage === 'patientUnsolvedRequest.php' ? 'active' : '') . '" href="patientUnsolvedRequest.php">unsolved requests</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link mx-2 dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Company
+            <a class="nav-link mx-2 dropdown-toggle" href="patientHome.php" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              '.$name.'
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item" href="#">Blog</a></li>
-              <li><a class="dropdown-item" href="#">About Us</a></li>
-              <li><a class="dropdown-item" href="#">Contact us</a></li>
+              <li><a class="dropdown-item" href="signOut.php">sign out</a></li>
+           
             </ul>
           </li>
         </ul>

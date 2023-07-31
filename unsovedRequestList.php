@@ -1,9 +1,10 @@
 <?php
 session_start();
 
-include './db/getUnsolvedRequests.php';
+
 include './components/doctorHeader/doctorHeader.php';
-include './components/doctorHeader/doctorHeaderLinks.php';
+include './db/getUnsolvedRequests.php';
+
 
 ?>
 <!DOCTYPE html>

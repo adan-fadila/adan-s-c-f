@@ -1,9 +1,8 @@
 <?php
+
 include 'db/db.php';
 include './components/patientHeader/patientHeader.php';
-session_start();
-$id = $_SESSION["id"];
-$name = $_SESSION["name"];
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,15 +22,8 @@ $name = $_SESSION["name"];
         <?php patientHeader(); ?>
     </header>
     <main>
-        <form id="search" method="post" action="#">
-            <div class="input-group">
-                <input type="text" name="search" class="form-control rounded" placeholder="Search by diagnosis" aria-label="Search" aria-describedby="search-addon">
-                <input type="submit" class="btn btn-outline-primary" value="search">
-            </div>
-            </div>
-        </form>
 
-        <table class="table table-striped">
+        <table class="table table-striped ">
 
             <thead class="thead-dark">
                 <tr>
@@ -56,11 +48,14 @@ $name = $_SESSION["name"];
 
                     echo '<tr>
                                 <td>' . $row["id"] . '</td>
-                                <td >' . $row["diagnosis"] . '</td>';if($row["edit"] == 0){
-                                    echo '<td><button type="button"  data-toggle="modal" data-target="#exampleModal"  class="btn btn-secondary editButton" data-id = ' . $row["id"] . '>edit</button>';
-                                }else{echo '<td><button type="button"  data-toggle="modal" data-target="#exampleModal"  class="btn btn-secondary" disabled>sent</button>';}
-                                
-                               echo ' <td> <button type="button"  class="btn btn-danger deleteButton" data-id = ' . $row["id"] . '>Delete</button></td>
+                                <td >' . $row["diagnosis"] . '</td>';
+                    if ($row["edit"] == 0) {
+                        echo '<td><button type="button"  data-toggle="modal" data-target="#exampleModal"  class="btn btn-secondary editButton" data-id = ' . $row["id"] . '>edit</button>';
+                    } else {
+                        echo '<td><button type="button"  data-toggle="modal" data-target="#exampleModal"  class="btn btn-secondary" disabled>sent</button>';
+                    }
+
+                    echo ' <td> <button type="button"  class="btn btn-danger deleteButton" data-id = ' . $row["id"] . '>Delete</button></td>
                                 <td >' . $more . '</td>
                                 
                                 </td>
@@ -88,7 +83,7 @@ $name = $_SESSION["name"];
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" id="sendMessageButton" class="btn btn-primary" >Send message</button>
+                                <button type="submit" id="sendMessageButton" class="btn btn-primary">Send message</button>
                             </div>
                         </form>
                     </div>

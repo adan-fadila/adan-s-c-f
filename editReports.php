@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include './db/solvedRequestInfo.php';
+include './db/editReport.php';
 include './components/doctorHeader/doctorHeader.php';
 
 ?>
@@ -12,7 +12,7 @@ include './components/doctorHeader/doctorHeader.php';
     <?php addDoctorHeaderHeadLinks() ?>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="styleSheet" href="./css/doctorStyle.css">
-    <script src="./js/requestList.js"></script>
+    <script src="./js/editrequestList.js"></script>
 
 
 </head>
@@ -20,9 +20,9 @@ include './components/doctorHeader/doctorHeader.php';
 <body>
     <header><?php addHeader() ?></header>
     <main>
-        <h3>solved requests List</h3>
+        <h3>edit requests List</h3>
 
-        <table id="solvedRequestTable" class="table">
+        <table id="editRequestTable" class="table">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -33,15 +33,14 @@ include './components/doctorHeader/doctorHeader.php';
             <tbody>
                 <?php
                 $count = 0;
-                while ($solvedRequestRow = mysqli_fetch_assoc($solvedRequestRes)) {
+                while ($editRequestRow = mysqli_fetch_assoc($editRequestRes)) {
 
-                    $requestId = $solvedRequestRow["id"];
-                    $patientId = $solvedRequestRow["patient_id"];
-                    $name = $solvedRequestRow["fullName"];
-                    $birth = $solvedRequestRow["Birthday"];
+                    $requestId = $editRequestRow["id"];
+                    $name = $editRequestRow["fullName"];
+                    $birth = $editRequestRow["Birthday"];
                     $age =  (date('Y') - date('Y', strtotime($birth)));
                     $count++;
-                    echo '<tr">
+                    echo '<tr onclick="handleRowClick(' . $requestId .');"> 
                     <th scope="row">' . $count . '</th>
                     <td>' . $name . '</td>
                     <td>' . $age . '</td>

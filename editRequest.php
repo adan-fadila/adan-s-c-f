@@ -1,20 +1,18 @@
 <?php
 session_start();
 $requestId = $_GET['requestId'];
-$patientId = $_GET['patientId'];
-$_SESSION["request_id"] = $requestId;
-include './db/unsolvedRequestInfo.php';
+include './db/editRequestInfo.php';
 include './components/doctorHeader/doctorHeader.php';
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title>request</title>
-    <link rel="styleSheet" href="./css/add_treatment.css">
+    <title>edit request</title>
+    <link rel="styleSheet" href="./css//add_treatment.css">
     <?php addDoctorHeaderHeadLinks(); ?>
-    <script src="./js/unsolvedRequest.js"></script>
-    <script src="./js/add_treatment.js"></script>
+    <script src="./js/editRequest.js"></script>
+    
     <link rel="styleSheet" href="./css/doctorStyle.css">
 
 </head>
@@ -27,68 +25,30 @@ include './components/doctorHeader/doctorHeader.php';
         <div class="main-body">
             <div class="card request-details">
                 <div class="card-body">
-                    <h5 class="card-title">request details</h5>
+                    <h5 class="card-title">patient details</h5>
                     <div class="row g-0">
                         <div class="col-md-8">
-                            <p class="card-text">full name: <?php echo $unsolvedRequestRow["fullName"]; ?></p>
-                            <p class="card-text">email: <?php echo $unsolvedRequestRow["Email"]; ?></p>
-                            <p class="card-text">weight: <?php echo $unsolvedRequestRow["weight"]; ?></p>
-                            <p class="card-text">height: <?php echo $unsolvedRequestRow["height"]; ?></p>
+                            <p class="card-text">full name: <?php echo $editRequestRow["fullName"]; ?></p>
+                            <p class="card-text">email: <?php echo $editRequestRow["Email"]; ?></p>
                         </div>
 
                         <div class="col-md-4">
-                            <p class="card-text">diagnosis: <?php echo $unsolvedRequestRow["diagnosis"]; ?></p>
-                            <p class="card-text">allergy: <?php echo $unsolvedRequestRow["allergies"]; ?></p>
-                            <p class="card-text"><?php if ($unsolvedRequestRow["vegeterian"] == 1) {
-                                                        echo 'vegeterian';
-                                                    }; ?></p>
-
+                            <p class="card-text">diagnosis: <?php echo $editRequestRow["diagnosis"]; ?></p>
                         </div>
                     </div>
                 </div>
             </div>
             <button type="button" id="openModalBtn" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                add treatment
+                edit treatment
             </button>
 
         </div>
 
-        <h3>patient request history</h3>
+        <h3>edit request </h3>
 
-        <table id="patientRequestHistory" class="table">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">diagnosis</th>
-                    <th scope="col">status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $count = 0;
-                $requestId;
-                while ($PatientHistoryRequestsRow = mysqli_fetch_assoc($PatientHistoryRequestsRes)) {
-
-                    $requestId = $PatientHistoryRequestsRow["id"];
-                    $diagnosis = $unsolvedRequestRow["diagnosis"];
-                    $status = $unsolvedRequestRow["proccessed"];
-                    $count++;
-                    echo '<tr>
-                        <th scope="row">' . $count . '</th>
-                        <td>' . $diagnosis . '</td>';
-                    if ($status == 0) {
-                        echo '<td> unsolved </td>';
-                    } else {
-                        echo '<td> solved </td>';
-                    }
-
-                    echo '</tr>';
-                }
-
-                ?>
-
-            </tbody>
-        </table>
+       <div class="card" style="width:fit-content; padding: 3%;">
+        <?php echo $editRequestRow["edit_request"]?>
+       </div>
 
 
 
@@ -97,7 +57,7 @@ include './components/doctorHeader/doctorHeader.php';
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">add treatment</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">edit treatment</h5>
                     </div>
                     <div class="modal-body">
                         <div class="t">

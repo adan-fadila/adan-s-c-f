@@ -44,28 +44,8 @@ include 'db/get-doctor-home-info.php';
                             </div>
                         </a>
                     </div>
-                    <div class="col-xl-6 col-md-12 mb-4">
-                        <a href="./doctorPatients.php" class="card home-card">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between p-md-1">
-                                    <div class="d-flex flex-row">
-                                        <div class="align-self-center">
-                                            <i class="far fa-comment-alt text-warning fa-3x me-4"></i>
-                                        </div>
-                                        <div>
-                                            <h4>patients</h4>
 
-                                        </div>
-                                    </div>
-                                    <div class="align-self-center">
-                                        <h2 class="h1 mb-0"><?php echo $patientCount; ?></h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="row">
+
                     <div class="col-xl-6 col-md-12 mb-4">
                         <a href="./unsovedRequestList.php" class="card home-card">
                             <div class="card-body">
@@ -85,11 +65,11 @@ include 'db/get-doctor-home-info.php';
                         </a>
                     </div>
 
+                </div>
 
-
-
+                <div class="row">
                     <div class="col-xl-6 col-md-12 mb-4">
-                        <a href="./unsovedRequestList.php" class="card home-card">
+                        <a href="./editReports.php" class="card home-card">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between p-md-1">
                                     <div class="d-flex flex-row">
@@ -100,7 +80,7 @@ include 'db/get-doctor-home-info.php';
                                         </div>
                                     </div>
                                     <div class="align-self-center">
-                                        <h2 class="h1 mb-0"><?php echo $solvedRequestCount; ?></h2>
+                                        <h2 class="h1 mb-0"><?php echo $editRequestCount; ?></h2>
                                     </div>
                                 </div>
                             </div>
